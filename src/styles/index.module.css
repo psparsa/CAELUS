@@ -1,0 +1,22 @@
+.HomePage {
+  width: 100vw;
+  height: 100vh;
+}
+
+.VideoPlayer {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+.Container {
+  width: 100vw;
+  min-height: 100vh;
+  background-color: rgba(14, 18, 33, 0.4);
+  display: flex;
+  flex-direction: column;
+}
