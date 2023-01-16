@@ -1,0 +1,17 @@
+.Weather {
+  display: flex;
+  align-items: center;
+  font-size: 1.5em;
+  color: white;
+  user-select: none;
+}
+
+.Icon {
+  width: 1.8rem;
+  margin-right: 0.5rem;
+}
+
+.CityName {
+  display: inline;
+  color: #b1b1b1;
+}

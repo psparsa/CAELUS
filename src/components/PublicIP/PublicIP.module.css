@@ -1,0 +1,17 @@
+.PublicIP {
+  height: 2.5rem;
+  padding: 0 1rem;
+  background-color: hsla(225, 14%, 11%, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  border-radius: 0 1.8rem 0 0;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.Flag {
+  margin-left: 0.5rem;
+}

@@ -20,3 +20,19 @@
   display: flex;
   flex-direction: column;
 }
+
+.Header {
+  width: 100vw;
+  display: flex;
+  justify-content: flex-start;
+  padding: 0 1rem;
+}
+
+.MiddleContainer {
+  width: 100vw;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
