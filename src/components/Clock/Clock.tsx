@@ -16,30 +16,31 @@ const monthNames = [
   "Dec",
 ];
 
+const getDate = () => {
+  const d = new Date();
+  return {
+    d: d.getDate(),
+    m: monthNames[d.getMonth()],
+    y: d.getFullYear(),
+  };
+};
+
+const getTime = () => {
+  const d = new Date();
+  return {
+    h: d.getHours() === 0 ? "00" : d.getHours(),
+    m: d.getMinutes() === 0 ? "00" : d.getMinutes(),
+  };
+};
+
 export const Clock = () => {
-  const [date, setDate] = React.useState({});
-  const [time, setTime] = React.useState({});
+  const [date, setDate] = React.useState(getDate());
+  const [time, setTime] = React.useState(getTime());
 
-  const updateDate = () => {
-    const d = new Date();
-    setDate({
-      d: d.getDate(),
-      m: monthNames[d.getMonth()],
-      y: d.getFullYear(),
-    });
-  };
-
-  const updateTime = () => {
-    const d = new Date();
-    setTime({
-      h: d.getHours() === 0 ? "00" : d.getHours(),
-      m: d.getMinutes() === 0 ? "00" : d.getMinutes(),
-    });
-  };
+  const updateDate = () => setDate(getDate());
+  const updateTime = () => setTime(getTime());
 
   React.useEffect(() => {
-    updateDate();
-    updateTime();
     document.addEventListener("focus", updateDate);
     const x = window.setInterval(updateTime, 1000);
     return () => {
