@@ -7,6 +7,13 @@ interface SearchProps {
 }
 
 export const Search = ({ className }: SearchProps) => {
+  const [keyword, setKeyword] = React.useState("");
+
+  const moveToGoogleResult = () => {
+    if (keyword.length > 0)
+      window.location.href = `https://www.google.com/search?q=${keyword}`;
+  };
+
   return (
     <div className={styles.Search + " " + className ?? ""}>
       <input
@@ -14,8 +21,12 @@ export const Search = ({ className }: SearchProps) => {
         maxLength={50}
         placeholder="What do you wanna know?"
         className={styles.Input}
+        onChange={(event) => setKeyword(event.target.value)}
+        onKeyDown={(event) => {
+          if (event.key === "Enter") moveToGoogleResult();
+        }}
       />
-      <button className={styles.BTN}>
+      <button className={styles.BTN} onClick={moveToGoogleResult}>
         <SearchIcon />
       </button>
     </div>
