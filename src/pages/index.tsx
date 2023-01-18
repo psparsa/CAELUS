@@ -28,7 +28,7 @@ const IndexPage: React.FC<PageProps> = () => {
           <Clock />
           <Search className={styles.Search} />
         </div>
-        <PublicIP ip="142.250.185.238" flagEmoji="🇩🇪" />
+        <PublicIP />
       </div>
     </main>
   );
