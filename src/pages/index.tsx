@@ -5,6 +5,7 @@ import type { HeadFC, PageProps } from "gatsby";
 import { Weather } from "../components/Weather/Weather";
 import { PublicIP } from "../components/PublicIP/PublicIP";
 import { Clock } from "../components/Clock/Clock";
+import { Search } from "../components/Search/Search";
 
 const IndexPage: React.FC<PageProps> = () => {
   return (
@@ -25,6 +26,7 @@ const IndexPage: React.FC<PageProps> = () => {
         </header>
         <div className={styles.MiddleContainer}>
           <Clock />
+          <Search className={styles.Search} />
         </div>
         <PublicIP ip="142.250.185.238" flagEmoji="🇩🇪" />
       </div>

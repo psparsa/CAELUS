@@ -1,0 +1,29 @@
+.Search {
+  width: 40rem;
+  max-width: 90vw;
+  height: 3rem;
+  background-color: #c6c2d6;
+  border-radius: 3rem;
+  overflow: hidden;
+  display: flex;
+}
+
+.Input {
+  flex: 1;
+  padding: 0 1rem;
+  font-family: "Roboto", sans-serif;
+  border: none;
+  outline: none;
+  background-color: inherit;
+}
+
+.BTN {
+  width: 3.5rem;
+  height: 100%;
+  background-color: hsla(250, 43%, 46%, 0.8);
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
