@@ -22,7 +22,7 @@ const IndexPage: React.FC<PageProps> = () => {
 
       <div className={styles.Container}>
         <header className={styles.Header}>
-          <Weather iconSrc="/moon.png" cityName="Mashhad" temperature={-7} />
+          <Weather />
         </header>
         <div className={styles.MiddleContainer}>
           <Clock />

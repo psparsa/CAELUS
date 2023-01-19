@@ -4,14 +4,64 @@
   font-size: 1.5em;
   color: white;
   user-select: none;
+  cursor: pointer;
 }
 
 .Icon {
-  width: 1.8rem;
-  margin-right: 0.5rem;
+  max-width: 3rem;
 }
 
 .CityName {
   display: inline;
   color: #b1b1b1;
+}
+
+.CitySelector {
+  width: 12rem;
+  background-color: #252e44;
+  color: white;
+  position: absolute;
+  z-index: 1;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.2rem 0;
+}
+
+.SearchTitle {
+  margin: 0 0 1rem 0;
+}
+
+.SearchInput {
+  width: 85%;
+  border: none;
+  outline: none;
+  font-size: 1em;
+  padding: 0.3rem;
+  text-align: center;
+  border-radius: 0.2rem;
+  background-color: #677291;
+  font-family: "Roboto", sans-serif;
+}
+
+.SuggestionsContainer {
+  width: 85%;
+  background-color: #677291;
+  margin-top: 0.4rem;
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.2rem;
+}
+
+.SuggestionItem {
+  width: 100%;
+  margin: 0.2rem 0;
+  border-radius: 0.1rem;
+  color: black;
+  cursor: pointer;
+  transition: ease-in-out 0.1s;
+}
+
+.SuggestionItem:hover {
+  color: white;
 }
