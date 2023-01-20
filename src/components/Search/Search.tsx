@@ -1,13 +1,13 @@
-import React from "react";
-import * as styles from "./Search.module.css";
-import SearchIcon from "../../assets/search.svg";
+import React from 'react';
+import * as styles from './Search.module.css';
+import SearchIcon from '../../assets/search.svg';
 
 interface SearchProps {
   className?: string;
 }
 
 export const Search = ({ className }: SearchProps) => {
-  const [keyword, setKeyword] = React.useState("");
+  const [keyword, setKeyword] = React.useState('');
 
   const moveToGoogleResult = () => {
     if (keyword.length > 0)
@@ -15,7 +15,7 @@ export const Search = ({ className }: SearchProps) => {
   };
 
   return (
-    <div className={styles.Search + " " + className ?? ""}>
+    <div className={styles.Search + ' ' + className ?? ''}>
       <input
         type="text"
         maxLength={50}
@@ -23,7 +23,7 @@ export const Search = ({ className }: SearchProps) => {
         className={styles.Input}
         onChange={(event) => setKeyword(event.target.value)}
         onKeyDown={(event) => {
-          if (event.key === "Enter") moveToGoogleResult();
+          if (event.key === 'Enter') moveToGoogleResult();
         }}
       />
       <button className={styles.BTN} onClick={moveToGoogleResult}>

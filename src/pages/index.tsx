@@ -1,11 +1,11 @@
-import "../styles/global.css";
-import React from "react";
-import * as styles from "../styles/index.module.css";
-import type { HeadFC, PageProps } from "gatsby";
-import { Weather } from "../components/Weather/Weather";
-import { PublicIP } from "../components/PublicIP/PublicIP";
-import { Clock } from "../components/Clock/Clock";
-import { Search } from "../components/Search/Search";
+import '../styles/global.css';
+import React from 'react';
+import * as styles from '../styles/index.module.css';
+import type { HeadFC, PageProps } from 'gatsby';
+import { Weather } from '../components/Weather/Weather';
+import { PublicIP } from '../components/PublicIP/PublicIP';
+import { Clock } from '../components/Clock/Clock';
+import { Search } from '../components/Search/Search';
 
 const IndexPage: React.FC<PageProps> = () => {
   return (

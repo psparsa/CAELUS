@@ -1,6 +1,6 @@
-import React from "react";
-import { getIP } from "../../api/getIP";
-import * as styles from "./PublicIP.module.css";
+import React from 'react';
+import { getIP } from '../../api/getIP';
+import * as styles from './PublicIP.module.css';
 
 export const PublicIP = () => {
   const [state, setState] = React.useState<
@@ -21,8 +21,8 @@ export const PublicIP = () => {
 
   React.useEffect(() => {
     updateIP();
-    window.addEventListener("focus", updateIP);
-    return () => window.removeEventListener("focus", updateIP);
+    window.addEventListener('focus', updateIP);
+    return () => window.removeEventListener('focus', updateIP);
   }, []);
 
   if (state === undefined) return <></>;

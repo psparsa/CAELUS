@@ -63,7 +63,7 @@ export const getIP = async () => {
     const response = (await f.json()) as Response;
     return response;
   } catch (e) {
-    console.log("Ping:", e);
+    console.log('Ping:', e);
     throw new Error();
   }
 };

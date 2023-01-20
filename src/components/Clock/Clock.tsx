@@ -1,19 +1,19 @@
-import React from "react";
-import * as styles from "./Clock.module.css";
+import React from 'react';
+import * as styles from './Clock.module.css';
 
 const monthNames = [
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
-  "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec",
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec',
 ];
 
 const getDate = () => {
@@ -28,8 +28,8 @@ const getDate = () => {
 const getTime = () => {
   const d = new Date();
   return {
-    h: d.getHours() === 0 ? "00" : d.getHours(),
-    m: d.getMinutes() === 0 ? "00" : d.getMinutes(),
+    h: d.getHours() === 0 ? '00' : d.getHours(),
+    m: d.getMinutes() === 0 ? '00' : d.getMinutes(),
   };
 };
 
@@ -41,10 +41,10 @@ export const Clock = () => {
   const updateTime = () => setTime(getTime());
 
   React.useEffect(() => {
-    document.addEventListener("focus", updateDate);
+    document.addEventListener('focus', updateDate);
     const x = window.setInterval(updateTime, 1000);
     return () => {
-      document.removeEventListener("focus", updateDate);
+      document.removeEventListener('focus', updateDate);
       window.clearInterval(x);
     };
   }, []);

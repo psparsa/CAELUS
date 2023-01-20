@@ -1,19 +1,19 @@
-import React from "react";
-import { getCitySuggestions } from "../../api/getCitySuggestions";
-import { getCurrentWeather } from "../../api/getCurrentWeather";
-import { debounce } from "../../utils/debounce";
-import * as styles from "./Weather.module.css";
+import React from 'react';
+import { getCitySuggestions } from '../../api/getCitySuggestions';
+import { getCurrentWeather } from '../../api/getCurrentWeather';
+import { debounce } from '../../utils/debounce';
+import * as styles from './Weather.module.css';
 
 export const Weather = () => {
   const ref = React.useRef<HTMLDivElement | null>(null);
   const [suggestions, setSuggestions] = React.useState<string[]>([]);
   const [city, setCity] = React.useState(
-    localStorage.getItem("city") ?? "Berlin"
+    localStorage.getItem('city') ?? 'Berlin'
   );
   const [isSearchBoxVisible, setSearchBoxVisibility] = React.useState(false);
   const [data, setData] = React.useState({
-    icon: "/empty.png",
-    temperature: "∞",
+    icon: '/empty.png',
+    temperature: '∞',
   });
 
   const updateWeatherData = (cityName = city) => {
@@ -21,7 +21,7 @@ export const Weather = () => {
       .then((res) => {
         setData({
           icon: res.current.condition.icon,
-          temperature: "" + ~~res.current.temp_c,
+          temperature: '' + ~~res.current.temp_c,
         });
       })
       .catch(console.error);
@@ -37,7 +37,7 @@ export const Weather = () => {
   }, 500);
 
   const handleSelect = (c: string) => {
-    localStorage.setItem("city", c);
+    localStorage.setItem('city', c);
     setCity(c);
     setSearchBoxVisibility(false);
     setSuggestions([]);
@@ -52,8 +52,8 @@ export const Weather = () => {
 
   React.useEffect(() => {
     updateWeatherData();
-    document.addEventListener("click", handleClickOnDocument);
-    return () => document.removeEventListener("click", handleClickOnDocument);
+    document.addEventListener('click', handleClickOnDocument);
+    return () => document.removeEventListener('click', handleClickOnDocument);
   }, []);
 
   return (
