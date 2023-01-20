@@ -1,0 +1,30 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
+  "plugins": ["const-case", "fp"],
+  "rules": {
+    "const-case/uppercase": "error",
+    "fp/no-arguments": "error",
+    "fp/no-class": "error",
+    "fp/no-delete": "error",
+    "fp/no-events": "error",
+    "fp/no-get-set": "error",
+    "fp/no-let": "error",
+    "fp/no-loops": "error",
+    "fp/no-mutating-assign": "error",
+    "fp/no-mutating-methods": "error",
+    "fp/no-mutation": "error",
+    "fp/no-proxy": "error",
+    "fp/no-rest-parameters": "error",
+    "fp/no-this": "error",
+    "fp/no-throw": "error",
+    "fp/no-valueof-field": "error",
+    "no-var": "error",
+    "complexity": ["warn", 10] // Read about cyclomatic complexity: https://en.wikipedia.org/wiki/Cyclomatic_complexity
+  }
+}
