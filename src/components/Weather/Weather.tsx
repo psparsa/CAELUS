@@ -84,6 +84,7 @@ export const Weather = () => {
                 <div
                   onClick={() => handleSelect(name)}
                   className={styles.SuggestionItem}
+                  key={name}
                 >
                   {name}
                 </div>

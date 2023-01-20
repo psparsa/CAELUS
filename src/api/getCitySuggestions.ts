@@ -8,11 +8,11 @@ type SuggestionsResponse = {
   url: string;
 }[];
 
-const API_KEY = process.env.WEATHER_API_KEY;
+const apiKey = process.env.WEATHER_API_KEY;
 export const getCitySuggestions = async (q: string) => {
   try {
     const f = await fetch(
-      `https://api.weatherapi.com/v1/search.json?key=${API_KEY}&q=${q}`
+      `https://api.weatherapi.com/v1/search.json?key=${apiKey}&q=${q}`
     );
     const response = await f.json();
     return response as SuggestionsResponse;

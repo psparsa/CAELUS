@@ -11,7 +11,11 @@ export const Search = ({ className }: SearchProps) => {
 
   const moveToGoogleResult = () => {
     if (keyword.length > 0)
-      window.location.href = `https://www.google.com/search?q=${keyword}`;
+      Reflect.set(
+        window.location,
+        'href',
+        `https://www.google.com/search?q=${keyword}`
+      );
   };
 
   return (

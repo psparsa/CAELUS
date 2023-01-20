@@ -54,16 +54,15 @@ type Response = {
   connection: Connection;
 };
 
-const API_KEY = process.env.ABSTRACT_API_KEY;
+const apiKey = process.env.ABSTRACT_API_KEY;
 export const getIP = async () => {
   try {
     const f = await fetch(
-      `https://ipgeolocation.abstractapi.com/v1/?api_key=${API_KEY}`
+      `https://ipgeolocation.abstractapi.com/v1/?api_key=${apiKey}`
     );
     const response = (await f.json()) as Response;
     return response;
   } catch (e) {
-    console.log('Ping:', e);
-    throw new Error();
+    throw new Error(String(e));
   }
 };

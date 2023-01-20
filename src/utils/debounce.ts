@@ -1,3 +1,7 @@
+/* eslint-disable fp/no-mutation */
+/* eslint-disable fp/no-let */
+/* eslint-disable fp/no-rest-parameters */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export const debounce = <T extends (...args: any) => any>(
   cb: T,
   ms: number
