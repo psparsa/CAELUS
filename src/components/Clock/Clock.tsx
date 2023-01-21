@@ -25,11 +25,13 @@ const getDate = () => {
   };
 };
 
+const formatTimeDigit = (x: number) => (x < 10 ? '0' + x : x);
+
 const getTime = () => {
   const d = new Date();
   return {
-    h: d.getHours() === 0 ? '00' : d.getHours(),
-    m: d.getMinutes() === 0 ? '00' : d.getMinutes(),
+    h: formatTimeDigit(d.getHours()),
+    m: formatTimeDigit(d.getMinutes()),
   };
 };
 
