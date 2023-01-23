@@ -6,6 +6,7 @@ import { Weather } from '../components/Weather/Weather';
 import { PublicIP } from '../components/PublicIP/PublicIP';
 import { Clock } from '../components/Clock/Clock';
 import { Search } from '../components/Search/Search';
+import { SpeedDial } from '../components/SpeedDial/SpeedDial';
 
 const IndexPage: React.FC<PageProps> = () => {
   return (
@@ -27,6 +28,7 @@ const IndexPage: React.FC<PageProps> = () => {
         <div className={styles.MiddleContainer}>
           <Clock />
           <Search className={styles.Search} />
+          <SpeedDial />
         </div>
         <PublicIP />
       </div>

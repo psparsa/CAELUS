@@ -1,0 +1,34 @@
+.SpeedDial {
+  display: flex;
+  flex-direction: column;
+  width: 55rem;
+  max-width: 90vw;
+}
+
+.SuggestionsTogglerContainer {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  user-select: none;
+}
+
+.SuggestionsToggler {
+  color: hsla(0, 0%, 100%, 0.7);
+  cursor: pointer;
+  display: flex;
+}
+
+.ToggerIcon {
+  margin-left: 0.2rem;
+}
+
+.CardsContainer {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.Card {
+  margin: 1rem;
+}

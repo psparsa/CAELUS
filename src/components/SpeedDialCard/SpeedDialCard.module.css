@@ -1,0 +1,52 @@
+.SpeedDialCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.ImageFrame {
+  width: 4.2rem;
+  height: 4.2rem;
+  background-color: hsla(250, 43%, 46%, 0.8);
+  border-radius: 0.6rem;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: ease-in-out 0.15s;
+}
+
+.SpeedDialCard:hover .ImageFrame {
+  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.3);
+}
+
+.Icon {
+  width: 3rem;
+}
+
+.Name {
+  width: 100%;
+  text-align: center;
+  margin: 0.3rem 0;
+  color: white;
+}
+
+.DeleteIcon {
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 50%;
+  background-color: white;
+  position: absolute;
+  transform: translate(1.8rem, -0.2rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: snow;
+  border: solid 0.1rem black;
+  transition: ease-in-out 0.2s;
+}
+
+.DeleteIcon:hover {
+  box-shadow: 0 0 2rem rgba(150, 0, 100, 0.3);
+}

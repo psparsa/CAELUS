@@ -1,0 +1,16 @@
+.AddSpeedDial {
+  width: 4.2rem;
+  height: 4.2rem;
+  border-radius: 0.6rem;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0.1rem snow dashed;
+  cursor: pointer;
+  transition: scale ease-in-out 0.1s;
+}
+
+.AddSpeedDial:hover {
+  scale: 1.1;
+}
