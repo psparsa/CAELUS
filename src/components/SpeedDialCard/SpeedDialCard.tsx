@@ -18,17 +18,16 @@ export const SpeedDialCard = ({
   const handleClick = () => Reflect.set(window.location, 'href', link);
 
   return (
-    <div
-      className={cc([styles.SpeedDialCard, className])}
-      onClick={handleClick}
-    >
+    <div className={cc([styles.SpeedDialCard, className])}>
       <div className={styles.DeleteIcon}>
         <img src="/trash.svg" />
       </div>
-      <div className={styles.ImageFrame}>
+      <div className={styles.ImageFrame} onClick={handleClick}>
         <img src={iconSrc} className={styles.Icon} />
       </div>
-      <p className={styles.Name}>{name}</p>
+      <p className={styles.Name} onClick={handleClick}>
+        {name}
+      </p>
     </div>
   );
 };

@@ -12,7 +12,7 @@ export const Weather = () => {
   );
   const [isSearchBoxVisible, setSearchBoxVisibility] = React.useState(false);
   const [data, setData] = React.useState({
-    icon: '/empty.png',
+    icon: '#',
     temperature: '∞',
   });
 
