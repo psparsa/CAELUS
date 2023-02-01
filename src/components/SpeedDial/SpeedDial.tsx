@@ -31,16 +31,24 @@ const dummyCards = [
   },
 ];
 
+const getExpandStatus = () => {
+  const x = window.localStorage.getItem('expanded') ?? 'false';
+  return x === 'true';
+};
+
 export const SpeedDial = ({ className }: SpeedDialProps) => {
-  const [isExpanded, setIsExpanded] = React.useState(false);
+  const [isExpanded, setIsExpanded] = React.useState(getExpandStatus());
+
+  const handleToggle = () =>
+    setIsExpanded((p) => {
+      window.localStorage.setItem('expanded', String(!p));
+      return !p;
+    });
 
   return (
     <div className={cc([className, styles.SpeedDial])}>
       <div className={styles.SuggestionsTogglerContainer}>
-        <div
-          className={styles.SuggestionsToggler}
-          onClick={() => setIsExpanded((p) => !p)}
-        >
+        <div className={styles.SuggestionsToggler} onClick={handleToggle}>
           <div>{isExpanded ? 'Hide' : 'Show'} Suggestions</div>
           <img
             src={isExpanded ? '/arrow-up.svg' : '/arrow-down.svg'}
