@@ -18,6 +18,8 @@ export const Search = ({ className }: SearchProps) => {
       );
   };
 
+  const clearInput = () => setKeyword('');
+
   return (
     <div className={styles.Search + ' ' + className ?? ''}>
       <input
@@ -25,11 +27,17 @@ export const Search = ({ className }: SearchProps) => {
         maxLength={50}
         placeholder="What do you wanna know?"
         className={styles.Input}
+        value={keyword}
         onChange={(event) => setKeyword(event.target.value)}
         onKeyDown={(event) => {
           if (event.key === 'Enter') moveToGoogleResult();
         }}
       />
+      {keyword.length > 0 && (
+        <div className={styles.Clear} onClick={clearInput}>
+          X
+        </div>
+      )}
       <button className={styles.BTN} onClick={moveToGoogleResult}>
         <SearchIcon />
       </button>

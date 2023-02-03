@@ -18,6 +18,21 @@
   background-color: inherit;
 }
 
+.Clear {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  padding: 0 0.2rem;
+  margin-right: 0.4rem;
+  cursor: pointer;
+  color: rgb(97, 97, 97);
+  transition: ease-in-out 0.1s;
+}
+
+.Clear:hover {
+  color: black;
+}
+
 .BTN {
   width: 3.5rem;
   height: 100%;
