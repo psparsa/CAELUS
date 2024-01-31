@@ -15,7 +15,6 @@ export const PublicIP = () => {
     getIP()
       .then((res) => {
         setState({ ip: res.ip_address, flagEmoji: res.flag.emoji });
-        console.log({ ip: res.ip_address, flagEmoji: res.flag.emoji });
       })
       .catch(console.error);
 

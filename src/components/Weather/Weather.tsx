@@ -63,9 +63,9 @@ export const Weather = () => {
         onClick={() => setSearchBoxVisibility(true)}
       >
         <img src={data.icon} className={styles.Icon} />
-        <p>
+        <span>
           <p className={styles.CityName}>{city}</p> | {data.temperature}°C
-        </p>
+        </span>
       </div>
       {isSearchBoxVisible && (
         <div className={styles.CitySelector}>
