@@ -34,9 +34,13 @@ export const SpeedDial = ({ className }: SpeedDialProps) => {
     });
 
   const handleAddItem = (data: SpeedDialItem) => {
-    const updatedItems = [...items, data];
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updatedItems));
-    setItems(updatedItems);
+    const isDuplicate = !!items.find((item) => item.link === data.link);
+
+    if (!isDuplicate) {
+      const updatedItems = [...items, data];
+      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updatedItems));
+      setItems(updatedItems);
+    }
 
     setIsFormVisible(false);
   };
