@@ -7,14 +7,17 @@ import * as styles from './Weather.module.css';
 export const Weather = () => {
   const ref = React.useRef<HTMLDivElement | null>(null);
   const [suggestions, setSuggestions] = React.useState<string[]>([]);
-  const [city, setCity] = React.useState(
-    localStorage.getItem('city') ?? 'Berlin'
-  );
+  const [city, setCity] = React.useState('Berlin');
   const [isSearchBoxVisible, setSearchBoxVisibility] = React.useState(false);
   const [data, setData] = React.useState({
     icon: '#',
     temperature: '∞',
   });
+
+  React.useEffect(() => {
+    const city = localStorage.getItem('city');
+    if (city) setCity(city);
+  }, []);
 
   const updateWeatherData = (cityName = city) => {
     getCurrentWeather(cityName)
@@ -36,12 +39,12 @@ export const Weather = () => {
       .catch(console.error);
   }, 500);
 
-  const handleSelect = (c: string) => {
-    localStorage.setItem('city', c);
-    setCity(c);
+  const handleSelect = (city: string) => {
+    localStorage.setItem('city', city);
+    setCity(city);
     setSearchBoxVisibility(false);
     setSuggestions([]);
-    updateWeatherData(c);
+    updateWeatherData(city);
   };
 
   const handleClickOnDocument = (e: MouseEvent) => {

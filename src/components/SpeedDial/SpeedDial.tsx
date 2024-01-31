@@ -9,23 +9,28 @@ interface SpeedDialProps {
   className?: string;
 }
 
-const getExpandStatus = () => {
-  const x = window.localStorage.getItem('expanded') ?? 'false';
-  return x === 'true';
-};
-
 type SpeedDialItem = { name: string; link: string };
 
 const LOCAL_STORAGE_KEY = 'speed-dial-items';
 export const SpeedDial = ({ className }: SpeedDialProps) => {
-  const [items, setItems] = React.useState<SpeedDialItem[]>(
-    JSON.parse(
-      localStorage.getItem(LOCAL_STORAGE_KEY) ?? '[]'
-    ) as SpeedDialItem[]
-  );
-
+  const [items, setItems] = React.useState<SpeedDialItem[]>([]);
   const [isFormVisible, setIsFormVisible] = React.useState(false);
-  const [isExpanded, setIsExpanded] = React.useState(getExpandStatus());
+  const [isExpanded, setIsExpanded] = React.useState<boolean>(false);
+
+  React.useEffect(() => {
+    setItems(
+      JSON.parse(
+        localStorage.getItem(LOCAL_STORAGE_KEY) ?? '[]'
+      ) as SpeedDialItem[]
+    );
+
+    const getExpandStatus = () => {
+      const x = window.localStorage.getItem('expanded') ?? 'false';
+      return x === 'true';
+    };
+
+    setIsExpanded(getExpandStatus());
+  }, []);
 
   const handleToggle = () =>
     setIsExpanded((previousState) => {
