@@ -34,11 +34,17 @@ export const SpeedDial = ({ className }: SpeedDialProps) => {
     });
 
   const handleAddItem = (data: SpeedDialItem) => {
-    const updatedItesms = [...items, data];
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updatedItesms));
-    setItems(updatedItesms);
+    const updatedItems = [...items, data];
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updatedItems));
+    setItems(updatedItems);
 
     setIsFormVisible(false);
+  };
+
+  const handleDeleteItem = (link: string) => {
+    const updatedItems = items.filter((item) => item.link !== link);
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updatedItems));
+    setItems(updatedItems);
   };
 
   return (
@@ -63,6 +69,7 @@ export const SpeedDial = ({ className }: SpeedDialProps) => {
             {items.map((card) => (
               <SpeedDialCard
                 key={card.link}
+                onDelete={handleDeleteItem}
                 name={card.name}
                 link={card.link}
                 className={styles.Card}

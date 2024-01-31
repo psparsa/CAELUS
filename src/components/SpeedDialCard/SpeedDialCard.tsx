@@ -3,12 +3,14 @@ import { cc } from '../../utils/combineClassNames';
 import * as styles from './SpeedDialCard.module.css';
 
 interface SpeedDialCardProps {
+  onDelete: (link: string) => void;
   name: string;
   link: string;
   className?: string;
 }
 
 export const SpeedDialCard = ({
+  onDelete,
   name,
   link,
   className,
@@ -20,7 +22,7 @@ export const SpeedDialCard = ({
 
   return (
     <div className={cc([styles.SpeedDialCard, className])}>
-      <div className={styles.DeleteIcon}>
+      <div className={styles.DeleteIcon} onClick={() => onDelete(link)}>
         <img src="/trash.svg" />
       </div>
       <div className={styles.ImageFrame} onClick={handleClick}>
