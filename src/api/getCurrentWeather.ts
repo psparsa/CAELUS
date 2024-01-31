@@ -48,13 +48,9 @@ interface WeatheResponse {
 
 const apiKey = process.env.WEATHER_API_KEY;
 export const getCurrentWeather = async (cityName: string) => {
-  try {
-    const f = await fetch(
-      `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${cityName}&aqi=no`
-    );
-    const response = await f.json();
-    return response as WeatheResponse;
-  } catch (error) {
-    throw new Error(String(error));
-  }
+  const fetchResult = await fetch(
+    `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${cityName}&aqi=no`
+  );
+  const response = await fetchResult.json();
+  return response as WeatheResponse;
 };

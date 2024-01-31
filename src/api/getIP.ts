@@ -56,13 +56,9 @@ type Response = {
 
 const apiKey = process.env.ABSTRACT_API_KEY;
 export const getIP = async () => {
-  try {
-    const f = await fetch(
-      `https://ipgeolocation.abstractapi.com/v1/?api_key=${apiKey}`
-    );
-    const response = (await f.json()) as Response;
-    return response;
-  } catch (e) {
-    throw new Error(String(e));
-  }
+  const fetchResult = await fetch(
+    `https://ipgeolocation.abstractapi.com/v1/?api_key=${apiKey}`
+  );
+  const response = (await fetchResult.json()) as Response;
+  return response;
 };
