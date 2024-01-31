@@ -6,7 +6,7 @@ export const PublicIP = () => {
   const [state, setState] = React.useState<
     | {
         ip: string;
-        flagEmoji: string;
+        flagSrc: string;
       }
     | undefined
   >(undefined);
@@ -14,7 +14,7 @@ export const PublicIP = () => {
   const updateIP = () =>
     getIP()
       .then((res) => {
-        setState({ ip: res.ip_address, flagEmoji: res.flag.emoji });
+        setState({ ip: res.ip_address, flagSrc: res.flag.svg });
       })
       .catch(console.error);
 
@@ -28,7 +28,7 @@ export const PublicIP = () => {
   return (
     <div className={styles.PublicIP}>
       <p>Public IP: {state.ip}</p>
-      <p className={styles.Flag}>{state.flagEmoji}</p>
+      <img src={state.flagSrc} className={styles.Flag}></img>
     </div>
   );
 };
