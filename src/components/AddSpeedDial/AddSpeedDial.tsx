@@ -3,12 +3,13 @@ import { cc } from '../../utils/combineClassNames';
 import * as styles from './AddSpeedDial.module.css';
 
 interface AddSpeedDialProps {
+  onClick?: () => void;
   className?: string;
 }
 
-export const AddSpeedDial = ({ className }: AddSpeedDialProps) => {
+export const AddSpeedDial = ({ onClick, className }: AddSpeedDialProps) => {
   return (
-    <div className={cc([className, styles.AddSpeedDial])}>
+    <div onClick={onClick} className={cc([className, styles.AddSpeedDial])}>
       <img src="/add.svg" />
     </div>
   );

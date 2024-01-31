@@ -3,73 +3,78 @@ import { cc } from '../../utils/combineClassNames';
 import { AddSpeedDial } from '../AddSpeedDial/AddSpeedDial';
 import { SpeedDialCard } from '../SpeedDialCard/SpeedDialCard';
 import * as styles from './SpeedDial.module.css';
+import { SpeedDialFormModal } from '../SpeedDialFormModal';
 
 interface SpeedDialProps {
   className?: string;
 }
-
-const dummyCards = [
-  {
-    name: 'Reddit',
-    link: 'https://reddit.com',
-    iconSrc: '/reddit.png',
-  },
-  {
-    name: 'Reddit',
-    link: 'https://reddit.com',
-    iconSrc: '/reddit.png',
-  },
-  {
-    name: 'Reddit',
-    link: 'https://reddit.com',
-    iconSrc: '/reddit.png',
-  },
-  {
-    name: 'Reddit',
-    link: 'https://reddit.com',
-    iconSrc: '/reddit.png',
-  },
-];
 
 const getExpandStatus = () => {
   const x = window.localStorage.getItem('expanded') ?? 'false';
   return x === 'true';
 };
 
+type SpeedDialItem = { name: string; link: string };
+
+const LOCAL_STORAGE_KEY = 'speed-dial-items';
 export const SpeedDial = ({ className }: SpeedDialProps) => {
+  const [items, setItems] = React.useState<SpeedDialItem[]>(
+    JSON.parse(
+      localStorage.getItem(LOCAL_STORAGE_KEY) ?? '[]'
+    ) as SpeedDialItem[]
+  );
+
+  const [isFormVisible, setIsFormVisible] = React.useState(false);
   const [isExpanded, setIsExpanded] = React.useState(getExpandStatus());
 
   const handleToggle = () =>
-    setIsExpanded((p) => {
-      window.localStorage.setItem('expanded', String(!p));
-      return !p;
+    setIsExpanded((previousState) => {
+      window.localStorage.setItem('expanded', String(!previousState));
+      return !previousState;
     });
 
+  const handleAddItem = (data: SpeedDialItem) => {
+    const updatedItesms = [...items, data];
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updatedItesms));
+    setItems(updatedItesms);
+
+    setIsFormVisible(false);
+  };
+
   return (
-    <div className={cc([className, styles.SpeedDial])}>
-      <div className={styles.SuggestionsTogglerContainer}>
-        <div className={styles.SuggestionsToggler} onClick={handleToggle}>
-          <div>{isExpanded ? 'Hide' : 'Show'} Suggestions</div>
-          <img
-            src={isExpanded ? '/arrow-up.svg' : '/arrow-down.svg'}
-            className={styles.ToggerIcon}
-          />
-        </div>
-      </div>
-      {isExpanded && (
-        <div className={styles.CardsContainer}>
-          {dummyCards.map((card) => (
-            <SpeedDialCard
-              name={card.name}
-              link={card.link}
-              iconSrc={card.iconSrc}
-              className={styles.Card}
-              key={card.name}
+    <>
+      <SpeedDialFormModal
+        open={isFormVisible}
+        onClose={() => setIsFormVisible(false)}
+        onSave={handleAddItem}
+      />
+      <div className={cc([className, styles.SpeedDial])}>
+        <div className={styles.SuggestionsTogglerContainer}>
+          <div className={styles.SuggestionsToggler} onClick={handleToggle}>
+            <div>{isExpanded ? 'Hide' : 'Show'} Suggestions</div>
+            <img
+              src={isExpanded ? '/arrow-up.svg' : '/arrow-down.svg'}
+              className={styles.ToggerIcon}
             />
-          ))}
-          <AddSpeedDial className={styles.Card} />
+          </div>
         </div>
-      )}
-    </div>
+        {isExpanded && (
+          <div className={styles.CardsContainer}>
+            {items.map((card) => (
+              <SpeedDialCard
+                key={card.link}
+                name={card.name}
+                link={card.link}
+                className={styles.Card}
+              />
+            ))}
+            <AddSpeedDial
+              onClick={() => setIsFormVisible(true)}
+              className={styles.Card}
+            />
+          </div>
+        )}
+      </div>
+    </>
   );
 };

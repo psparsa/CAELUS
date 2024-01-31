@@ -1,0 +1,83 @@
+.Underlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(0.2rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Modal {
+  border-radius: 0.5rem;
+  width: 25rem;
+  margin: 2rem;
+  padding: 3rem 1rem;
+  background-color: snow;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.InputWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.ErrorPlaceholder {
+  width: 100%;
+  text-align: center;
+  color: rgb(255, 90, 90);
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+}
+
+.Input {
+  width: 100%;
+  font-size: 1em;
+  font-family: inherit;
+  text-align: center;
+
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 0.2rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.Input:focus {
+  border-color: hsla(250, 43%, 46%, 0.8);
+}
+
+.Input::placeholder {
+  color: #999;
+}
+
+.Submit {
+  width: 100%;
+  height: 2.4rem;
+  border: none;
+  border-radius: 0.2rem;
+  background-color: hsla(250, 43%, 46%, 0.8);
+  font-size: inherit;
+  font-weight: 500;
+  color: white;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.Submit:hover {
+  opacity: 0.85;
+}
+
+.Submit[disabled] {
+  cursor: inherit;
+  opacity: 0.5;
+}
