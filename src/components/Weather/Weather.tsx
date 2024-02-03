@@ -1,6 +1,5 @@
 import React from 'react';
-import { getCitySuggestions } from '../../api/getCitySuggestions';
-import { getCurrentWeather } from '../../api/getCurrentWeather';
+import { weatherServices } from '../../api/services/weather';
 import { debounce } from '../../utils/debounce';
 import * as styles from './Weather.module.css';
 
@@ -20,21 +19,23 @@ export const Weather = () => {
   }, []);
 
   const updateWeatherData = (cityName = city) => {
-    getCurrentWeather(cityName)
-      .then((res) => {
+    weatherServices
+      .inquiryWeather(cityName)
+      .then((result) => {
         setData({
-          icon: res.current.condition.icon,
-          temperature: '' + ~~res.current.temp_c,
+          icon: result.weatherIndicatorIconSrc,
+          temperature: Math.round(result.celsiusTemperature).toString(),
         });
       })
       .catch(console.error);
   };
 
-  const handleSearch = debounce((k: string) => {
+  const handleSearch = debounce((keyword: string) => {
     setSuggestions([]);
-    getCitySuggestions(k)
-      .then((res) => {
-        setSuggestions(res.map((x) => x.name));
+    weatherServices
+      .searchCity(keyword)
+      .then((result) => {
+        setSuggestions(result.map((x) => x.name));
       })
       .catch(console.error);
   }, 500);

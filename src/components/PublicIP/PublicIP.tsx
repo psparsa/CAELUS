@@ -1,22 +1,18 @@
 import React from 'react';
-import { getIP } from '../../api/getIP';
+import { networkServices } from '../../api/services/network';
 import * as styles from './PublicIP.module.css';
 
 export const PublicIP = () => {
   const [state, setState] = React.useState<
     | {
         ip: string;
-        flagSrc: string;
+        countryFlagSrc: string;
       }
     | undefined
   >(undefined);
 
   const updateIP = () =>
-    getIP()
-      .then((res) => {
-        setState({ ip: res.ip_address, flagSrc: res.flag.svg });
-      })
-      .catch(console.error);
+    networkServices.getIP().then(setState).catch(console.error);
 
   React.useEffect(() => {
     updateIP();
@@ -28,7 +24,7 @@ export const PublicIP = () => {
   return (
     <div className={styles.PublicIP}>
       <p>Public IP: {state.ip}</p>
-      <img src={state.flagSrc} className={styles.Flag}></img>
+      <img src={state.countryFlagSrc} className={styles.Flag}></img>
     </div>
   );
 };
