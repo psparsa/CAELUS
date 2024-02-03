@@ -1,5 +1,6 @@
 .PublicIP {
   height: 2.5rem;
+  width: fit-content;
   padding: 0 1rem;
   background-color: hsla(225, 14%, 11%, 0.6);
   display: flex;
@@ -7,9 +8,6 @@
   align-items: center;
   color: white;
   border-radius: 0 1.8rem 0 0;
-  position: absolute;
-  left: 0;
-  bottom: 0;
 }
 
 .Flag {
